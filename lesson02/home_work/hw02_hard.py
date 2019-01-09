@@ -1,9 +1,19 @@
-# Задание-1: уравнение прямой вида y = kx + b задано в виде строки.
+﻿# Задание-1: уравнение прямой вида y = kx + b задано в виде строки.
 # Определить координату y точки с заданной координатой x.
 
 equation = 'y = -12x + 11111140.2121'
 x = 2.5
 # вычислите и выведите y
+
+print('Вычисление уравнения прямой вида y = kx + b')
+print('Дано уравнение {:s}'.format(equation))
+equation = equation.replace(' ','')
+k = float(equation[equation.find('=') + 1 : equation.find('x')])
+b = float(equation[equation.find('+') + 1:])
+print('Коэффициент k = {:f}'.format(k))
+print('Коэффициент b = {:f}'.format(b))
+y = float(k * x + b)
+print('Решение уравнения y = {:f}'.format(y))
 
 
 # Задание-2: Дата задана в виде строки формата 'dd.mm.yyyy'.
@@ -23,6 +33,34 @@ date = '01.11.1985'
 date = '01.22.1001'
 date = '1.12.1001'
 date = '-2.10.3001'
+
+def CheckDate(date):
+    if len(date) == 10:
+        date = date.split('.')
+        day = date[0]
+        month = date[1]
+        year = date[2]
+        if (day.isnumeric() == True) and (int(day) > 0) and (int(day) <= 31):
+            if (month.isnumeric() == True) and (int(month) > 0) and (int(month) <= 12):
+                if (year.isnumeric() == True) and (int(year) > 0) and (int(year) <= 9999):
+                    print('Заданная дата {}.{}.{} является корректной'.format(day,month,year))
+                else:
+                    print('Дата должна быть задана в формате dd.mm.yyyy, неправильно введён год dd.mm.{}'.format(year))
+            else:
+                print('Дата должна быть задана в формате dd.mm.yyyy, неправильно введён месяц dd.{}.yyyy'.format(month))
+        else:
+            print('Дата должна быть задана в формате dd.mm.yyyy, неправильно введён день {}.mm.yyyy'.format(day))
+    else:
+        print('Длина строки не соответствует заданному формату dd.mm.yyyy')
+
+date = '01.11.1985'
+CheckDate(date)
+date = '01.22.1001'
+CheckDate(date)
+date = '1.12.1001'
+CheckDate(date)
+date = '-2.10.3001'
+CheckDate(date)
 
 
 # Задание-3: "Перевёрнутая башня" (Задача олимпиадного уровня)
@@ -54,3 +92,5 @@ date = '-2.10.3001'
 #
 # Вход: 11
 # Выход: 5 3
+
+# Не разобрался. Сделаю позже.
